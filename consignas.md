@@ -10,5 +10,4 @@ add_time("3:00 PM", "3:10")
 add_time("11:43 PM", "24:20", "tueSday")
 # Returns: 12:03 AM, Thursday (2 days later)
 
-```
 
