@@ -1,15 +1,24 @@
+#simulo las entradas de la funcion para hacer las pruebas
 start = "12:35 AM"
 duration = "3:15"
+day = 1
+#hay que agregar dia a la DEF
+
+#____________________________________
+#acá arranca
+
+#Separar las entradas de la funcion
 new_start = start.replace(" ",":").split(":")
-#separo también DURATION
 new_duration = duration.split(":")
 
-#lista de valores sumados
-#formato final: [hora, minutos, AM/PM, días]
-sumados = []
+#dias de la semana
+dias_sem = {'Monday':1, 'Tuesday':2, 'Wednesday':3, 'Thursday':4, 'Friday':5, 'Saturday':6, 'Sunday':7}
+
+#variables
+suma_horas = 0
+suma_minutos = 0
 
 #suma de minutos
-suma_horas = 0 #ya dejo planteada la duración en horas para poder sumarla en el condicional
 suma_minutos = int(new_start[1]) + int(new_duration[1])
 
 if suma_minutos > 60:
