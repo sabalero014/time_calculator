@@ -1,5 +1,5 @@
 #simulo las entradas de la funcion para hacer las pruebas
-start = "12:35 AM"
+start = "2:35 PM"
 duration = "3:15"
 day = 1
 #hay que agregar dia a la DEF
@@ -29,19 +29,25 @@ elif 0 < suma_minutos < 60:
 else:
     print("algo raro pasa con los minutos")
 
+#sumo las horas
+#si las horas son 12, parto desde 0
+if int(new_start[0]) == 12:
+    new_start[0] = 0
+else:
+    pass
+
 #diferencio entre AM y PM
+#lo llevo todo al formato 24hs para poder sumar en forma coherente
 if new_start [2] =="PM":
     suma_horas = suma_horas + 12
 else:
     pass
-
-#sumo las horas
+#la variable suma_horas viene acarreando lo acumulado en la suma de minutos (si es que pasaron más de una hora) y la suma de 12 horas si es PM
 suma_horas = suma_horas + int(new_start[0]) + int(new_duration[0])                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
 
-#lista de los valores sumados nuevamente. Va al final de todo, con las variables copiadas
-sumados = [suma_horas,suma_minutos]
-#faltan 2 valores todavia
+if
+
+#faltan 2 valores todavia: día y AM/PM
 
 #impresiones de prueba
-print(suma_minutos)
-print(suma_horas)
+print(f'{str(suma_horas)}:{suma_minutos}')
