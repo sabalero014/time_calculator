@@ -1,7 +1,7 @@
 #simulo las entradas de la funcion para hacer las pruebas
 start = "2:35 PM"
-duration = "23:15"
-day = 1
+duration = "243:15"
+day = "MONDAY"
 #hay que agregar dia a la DEF
 
 #____________________________________
@@ -19,6 +19,8 @@ suma_horas = 0
 suma_minutos = 0
 tarde = 'AM'
 dias = 0 
+el_dia = "" #a usar para poner el dia de la semana en que finaliza la tarea
+num_dia = 0 # para elegir el numero de dia de la semana
 
 #suma de minutos
 suma_minutos = int(new_start[1]) + int(new_duration[1])
@@ -60,6 +62,46 @@ elif 0 < suma_horas < 12:
 else:
     print('Algo mal pasa con AM/PM')
 
-#impresiones de prueba
-print(f'{str(suma_horas)}:{suma_minutos} {tarde}')
-print(f'{dias} later')
+#impresiones correctas
+#despues reemplazar print por return
+horario_fin = str(suma_horas)+":"+str(suma_minutos)+" "+tarde
+days_later = "hola"
+if dias == 1:
+    days_later = " (next day)"
+elif dias > 1:
+    days_later = "("+str(dias)+" days later)"
+else:
+    days_later = "algo raro anda mal con los dias calculados"
+
+#dias de la semana
+#print(day)
+if day == 1:
+    #si no ingresa ningun nombre de dia, el valor toma 1 y en la oracion final queda sin naa
+    el_dia = ""
+elif day != 1:
+    #primero: limpiar nombre del dia ingresado
+    #print(type(day))
+    dia_texto = str(day)
+    dia_texto = dia_texto.lower()
+    dia_texto = dia_texto.capitalize()
+    #segundo: sacar numero de dia desde el diccionario
+    num_dia = dias_sem[dia_texto]
+    #print(f'numero de dia: {num_dia}')
+    #tercero: sumar los dias para obtener luego del diccionario el nombre del dia
+    dia_fin = num_dia + dias
+
+    #cuarto: si es mayor que 7, hay que ir restando.
+    while dia_fin > 7:
+        dia_fin = dia_fin - 7
+    print(f'dia de la semana en que finaliza: {dia_fin} - tipo: {type(dia_fin)}')
+
+    #quinto: extraer del diccionario el nombre del dia a partir del valor.
+    nombre_dia_fin = dias_sem.items(dia_fin)
+    print(f'dia en que finaliza: {nombre_dia_fin}')
+    #esto no funciona. Ver este link con 2 alternativas de solución: 
+    # https://www.geeksforgeeks.org/python-get-key-from-value-in-dictionary/
+
+else:
+    print("no agarró lo del dia de la semana")
+
+print(horario_fin+" "+el_dia+days_later)
