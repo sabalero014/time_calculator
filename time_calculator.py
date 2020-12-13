@@ -29,7 +29,7 @@ def add_time(start, duration, day = 1):
 
     #sumo las horas
     #si las horas son 12, parto desde 0, diferenciando por AM
-    if int(new_start[0]) == 12 and new_start[2]='AM':
+    if int(new_start[0]) == 12 and new_start[2]=='AM':
         new_start[0] = 0
 
     if new_start[2]=='PM' and int(new_start[0]) != 12:
@@ -37,8 +37,8 @@ def add_time(start, duration, day = 1):
 
     #la variable suma_horas viene acarreando lo acumulado en la suma de minutos (si es que pasaron más de una hora)
     #  y la suma de 12 horas si es PM
-    suma_horas = suma_horas + int(new_start[0]) + int(new_duration[0])                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
-
+    suma_horas = suma_horas + int(new_start[0]) + int(new_duration[0])
+    
     """#cantidad de dias
     dias = dias + round(int(suma_horas)/24)
     print(f'{dias} después')"""
@@ -49,17 +49,6 @@ def add_time(start, duration, day = 1):
         dias +=1
         #tener en cuenta que si el horario de finalización es a las 24:10 por ejemplo,
         #cuando reste 24hs me va a quedar suma_horas == 0
-
-    #separar PM/AM
-    if suma_horas > 12:
-        suma_horas = suma_horas - 12
-        tarde ='PM'
-    elif 0 < suma_horas < 12:
-        tarde ='AM'
-    elif suma_horas == 12:
-        tarde = 'PM'
-    else:
-        print('Algo mal pasa con AM/PM')
 
     #reescribo separar AM/PM analizando en orden las diferentes alternativas que se pueden presentar
     if suma_horas == 0:
