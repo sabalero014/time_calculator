@@ -1,3 +1,8 @@
+#valores que simulan la funcion
+start = "11:59 PM"
+duration = "24:05"
+day = 1
+
 #Separar las entradas de la funcion
 new_start = start.replace(" ",":").split(":")
 new_duration = duration.split(":")
@@ -43,7 +48,7 @@ dias = dias + round(int(suma_horas)/24)
 print(f'{dias} después')"""
 
 #voy restando de a 24 horas y sumando días a la cuenta. Esto me va a dar la cantidad de días y un horario en formato 24hs
-while suma_horas > 24:
+while suma_horas >= 24:
     suma_horas = suma_horas - 24
     dias +=1
     #tener en cuenta que si el horario de finalización es a las 24:10 por ejemplo,

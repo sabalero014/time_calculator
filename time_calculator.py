@@ -44,7 +44,7 @@ def add_time(start, duration, day = 1):
     print(f'{dias} después')"""
 
     #voy restando de a 24 horas y sumando días a la cuenta. Esto me va a dar la cantidad de días y un horario en formato 24hs
-    while suma_horas > 24:
+    while suma_horas >= 24:
         suma_horas = suma_horas - 24
         dias +=1
         #tener en cuenta que si el horario de finalización es a las 24:10 por ejemplo,
