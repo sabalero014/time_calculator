@@ -116,3 +116,4 @@ else:
     print("no agarró lo del dia de la semana")
 
 print(horario_fin+el_dia+days_later)
+new_time = horario_fin+el_dia+days_later
