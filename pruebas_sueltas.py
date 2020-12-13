@@ -69,7 +69,7 @@ days_later = "hola"
 if dias == 1:
     days_later = " (next day)"
 elif dias > 1:
-    days_later = "("+str(dias)+" days later)"
+    days_later = " ("+str(dias)+" days later)"
 else:
     days_later = "algo raro anda mal con los dias calculados"
 
@@ -84,24 +84,33 @@ elif day != 1:
     dia_texto = str(day)
     dia_texto = dia_texto.lower()
     dia_texto = dia_texto.capitalize()
+    
     #segundo: sacar numero de dia desde el diccionario
     num_dia = dias_sem[dia_texto]
     #print(f'numero de dia: {num_dia}')
+    
     #tercero: sumar los dias para obtener luego del diccionario el nombre del dia
     dia_fin = num_dia + dias
 
     #cuarto: si es mayor que 7, hay que ir restando.
     while dia_fin > 7:
         dia_fin = dia_fin - 7
+    #test print
     print(f'dia de la semana en que finaliza: {dia_fin} - tipo: {type(dia_fin)}')
 
     #quinto: extraer del diccionario el nombre del dia a partir del valor.
-    nombre_dia_fin = dias_sem.items(dia_fin)
-    print(f'dia en que finaliza: {nombre_dia_fin}')
-    #esto no funciona. Ver este link con 2 alternativas de solución: 
     # https://www.geeksforgeeks.org/python-get-key-from-value-in-dictionary/
+    #   5.a convertir los keys y values del diccionario en listas. Así puedo extraer index
+    key_list = list(dias_sem.keys())
+    val_list = list(dias_sem.values())
+    #   5.b extraer el index del valor buscado
+    position = val_list.index(dia_fin)
+    #   5.c dia de la semana desde KEY
+    el_dia = key_list[position]
+    #print(f'dia extraido del condicional: {el_dia}')
+    el_dia = ", "+key_list[position]
 
 else:
     print("no agarró lo del dia de la semana")
 
-print(horario_fin+" "+el_dia+days_later)
+print(horario_fin+el_dia+days_later)
