@@ -1,13 +1,4 @@
 def add_time(start, duration, day = 1):
-"""    #simulo las entradas de la funcion para hacer las pruebas
-    start = "2:35 PM"
-    duration = "3:15"
-    day = "MONDAY"
-    #hay que agregar dia a la DEF
-
-    #____________________________________
-    #acá arranca"""
-
     #Separar las entradas de la funcion
     new_start = start.replace(" ",":").split(":")
     new_duration = duration.split(":")
@@ -33,6 +24,8 @@ def add_time(start, duration, day = 1):
         pass
     else:
         print("algo raro pasa con los minutos")
+    if suma_minutos < 10:
+        suma_minutos = "0"+str(suma_minutos)
 
     #sumo las horas
     #si las horas son 12, parto desde 0
@@ -42,7 +35,8 @@ def add_time(start, duration, day = 1):
     if new_start[2]=='PM':
         suma_horas = suma_horas + 12
 
-    #la variable suma_horas viene acarreando lo acumulado en la suma de minutos (si es que pasaron más de una hora) y la suma de 12 horas si es PM
+    #la variable suma_horas viene acarreando lo acumulado en la suma de minutos (si es que pasaron más de una hora)
+    #  y la suma de 12 horas si es PM
     suma_horas = suma_horas + int(new_start[0]) + int(new_duration[0])                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
 
     """#cantidad de dias
@@ -60,6 +54,8 @@ def add_time(start, duration, day = 1):
         tarde ='PM'
     elif 0 < suma_horas < 12:
         tarde ='AM'
+    elif suma_horas == 12:
+        tarde = 'PM'
     else:
         print('Algo mal pasa con AM/PM')
 
