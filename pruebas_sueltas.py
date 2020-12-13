@@ -1,6 +1,6 @@
 #simulo las entradas de la funcion para hacer las pruebas
 start = "2:35 PM"
-duration = "243:15"
+duration = "3:15"
 day = "MONDAY"
 #hay que agregar dia a la DEF
 
@@ -18,7 +18,7 @@ dias_sem = {'Monday':1, 'Tuesday':2, 'Wednesday':3, 'Thursday':4, 'Friday':5, 'S
 suma_horas = 0
 suma_minutos = 0
 tarde = 'AM'
-dias = 0 
+dias = 0 # es la suma de los dias de duración
 el_dia = "" #a usar para poner el dia de la semana en que finaliza la tarea
 num_dia = 0 # para elegir el numero de dia de la semana
 
@@ -70,6 +70,8 @@ if dias == 1:
     days_later = " (next day)"
 elif dias > 1:
     days_later = " ("+str(dias)+" days later)"
+elif dias == 0:
+    days_later = ""
 else:
     days_later = "algo raro anda mal con los dias calculados"
 
@@ -96,7 +98,7 @@ elif day != 1:
     while dia_fin > 7:
         dia_fin = dia_fin - 7
     #test print
-    print(f'dia de la semana en que finaliza: {dia_fin} - tipo: {type(dia_fin)}')
+    #print(f'dia de la semana en que finaliza: {dia_fin} - tipo: {type(dia_fin)}')
 
     #quinto: extraer del diccionario el nombre del dia a partir del valor.
     # https://www.geeksforgeeks.org/python-get-key-from-value-in-dictionary/
