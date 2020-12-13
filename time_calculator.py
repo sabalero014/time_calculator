@@ -28,11 +28,11 @@ def add_time(start, duration, day = 1):
         suma_minutos = "0"+str(suma_minutos)
 
     #sumo las horas
-    #si las horas son 12, parto desde 0
-    if int(new_start[0]) == 12:
+    #si las horas son 12, parto desde 0, diferenciando por AM
+    if int(new_start[0]) == 12 and new_start[2]='AM':
         new_start[0] = 0
 
-    if new_start[2]=='PM':
+    if new_start[2]=='PM' and int(new_start[0]) != 12:
         suma_horas = suma_horas + 12
 
     #la variable suma_horas viene acarreando lo acumulado en la suma de minutos (si es que pasaron más de una hora)
@@ -47,6 +47,8 @@ def add_time(start, duration, day = 1):
     while suma_horas > 24:
         suma_horas = suma_horas - 24
         dias +=1
+        #tener en cuenta que si el horario de finalización es a las 24:10 por ejemplo,
+        #cuando reste 24hs me va a quedar suma_horas == 0
 
     #separar PM/AM
     if suma_horas > 12:
@@ -58,6 +60,21 @@ def add_time(start, duration, day = 1):
         tarde = 'PM'
     else:
         print('Algo mal pasa con AM/PM')
+
+    #reescribo separar AM/PM analizando en orden las diferentes alternativas que se pueden presentar
+    if suma_horas == 0:
+        suma_horas = 12
+        tarde = 'AM'
+    elif 0 < suma_horas < 12:
+        #no toco suma_horas
+        tarde = 'AM'
+    elif suma_horas == 12:
+        #no toco suma_horas
+        tarde = 'PM'
+    elif 12 < suma_horas < 24:
+        #no puede ser igual o mator que 24, lo debería haber restado en WHILE LOOP
+        suma_horas = suma_horas - 12
+        tarde = 'PM'
 
     #impresiones correctas
     #despues reemplazar print por return
